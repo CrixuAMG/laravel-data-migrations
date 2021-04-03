@@ -1,11 +1,11 @@
 <?php
 
-namespace Crixuamg\LaravelDataMigrations;
+namespace CrixuAMG\LaravelDataMigrations;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Crixuamg\LaravelDataMigrations\Skeleton\SkeletonClass
+ * @see \CrixuAMG\LaravelDataMigrations\Skeleton\SkeletonClass
  */
 class LaravelDataMigrationsFacade extends Facade
 {

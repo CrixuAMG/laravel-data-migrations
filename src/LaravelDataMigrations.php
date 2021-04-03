@@ -1,6 +1,6 @@
 <?php
 
-namespace Crixuamg\LaravelDataMigrations;
+namespace CrixuAMG\LaravelDataMigrations;
 
 class LaravelDataMigrations
 {

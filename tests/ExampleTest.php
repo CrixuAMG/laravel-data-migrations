@@ -1,9 +1,9 @@
 <?php
 
-namespace Crixuamg\LaravelDataMigrations\Tests;
+namespace CrixuAMG\LaravelDataMigrations\Tests;
 
 use Orchestra\Testbench\TestCase;
-use Crixuamg\LaravelDataMigrations\LaravelDataMigrationsServiceProvider;
+use CrixuAMG\LaravelDataMigrations\LaravelDataMigrationsServiceProvider;
 
 class ExampleTest extends TestCase
 {
@@ -12,7 +12,7 @@ class ExampleTest extends TestCase
     {
         return [LaravelDataMigrationsServiceProvider::class];
     }
-    
+
     /** @test */
     public function true_is_true()
     {

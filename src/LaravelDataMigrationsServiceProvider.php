@@ -1,7 +1,8 @@
 <?php
 
-namespace Crixuamg\LaravelDataMigrations;
+namespace CrixuAMG\LaravelDataMigrations;
 
+use CrixuAMG\LaravelDataMigrations\Console\Commands\DataMigrationMakeCommand;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelDataMigrationsServiceProvider extends ServiceProvider
@@ -11,36 +12,33 @@ class LaravelDataMigrationsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*
-         * Optional methods to load your package assets
-         */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-data-migrations');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-data-migrations');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->registerMigrations();
 
+        $this->registerCommands();
+    }
+
+    /**
+     * Register console commands
+     */
+    private function registerCommands()
+    {
         if ($this->app->runningInConsole()) {
+            $this->commands([
+                DataMigrationMakeCommand::class,
+            ]);
+        }
+    }
+
+    /**
+     * Register the migrations
+     */
+    private function registerMigrations()
+    {
+        if (!class_exists('CreateDataMigrationsTable')) {
+            $timestamp = date('Y_m_d_His', time());
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('laravel-data-migrations.php'),
-            ], 'config');
-
-            // Publishing the views.
-            /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-data-migrations'),
-            ], 'views');*/
-
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/laravel-data-migrations'),
-            ], 'assets');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/laravel-data-migrations'),
-            ], 'lang');*/
-
-            // Registering package commands.
-            // $this->commands([]);
+                __DIR__ . '/database/migrations/create_data_migrations_table.php.stub' => $this->app->databasePath() . "/migrations/{$timestamp}_create_data_migrations_table.php",
+            ], 'migrations');
         }
     }
 
