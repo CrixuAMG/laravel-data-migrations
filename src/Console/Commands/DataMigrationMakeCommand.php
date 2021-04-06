@@ -13,7 +13,7 @@ class DataMigrationMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'make:data-migration';
+    protected $name = 'data-migration:make';
     /**
      * The console command description.
      *

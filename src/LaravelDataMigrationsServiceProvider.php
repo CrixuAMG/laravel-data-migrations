@@ -3,6 +3,7 @@
 namespace CrixuAMG\LaravelDataMigrations;
 
 use CrixuAMG\LaravelDataMigrations\Console\Commands\DataMigrationMakeCommand;
+use CrixuAMG\LaravelDataMigrations\Console\Commands\RunDataMigration;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelDataMigrationsServiceProvider extends ServiceProvider
@@ -25,6 +26,7 @@ class LaravelDataMigrationsServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 DataMigrationMakeCommand::class,
+                RunDataMigration::class,
             ]);
         }
     }
@@ -37,7 +39,7 @@ class LaravelDataMigrationsServiceProvider extends ServiceProvider
         if (!class_exists('CreateDataMigrationsTable')) {
             $timestamp = date('Y_m_d_His', time());
             $this->publishes([
-                __DIR__ . '/database/migrations/create_data_migrations_table.php.stub' => $this->app->databasePath() . "/migrations/{$timestamp}_create_data_migrations_table.php",
+                __DIR__.'/database/migrations/create_data_migrations_table.php.stub' => $this->app->databasePath()."/migrations/{$timestamp}_create_data_migrations_table.php",
             ], 'migrations');
         }
     }
