@@ -38,7 +38,10 @@ class RunDataMigration extends Command
      */
     public function handle()
     {
-        LaravelDataMigrations::migrate();
+        LaravelDataMigrations::migrate(
+            // Send the current instance to the migrator, so it can output information to the console
+            $this
+        );
 
         return 0;
     }

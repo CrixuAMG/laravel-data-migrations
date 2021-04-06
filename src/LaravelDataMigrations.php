@@ -3,6 +3,7 @@
 namespace CrixuAMG\LaravelDataMigrations;
 
 use CrixuAMG\LaravelDataMigrations\DataMigrations\AbstractDataMigration;
+use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -10,13 +11,13 @@ use RegexIterator;
 
 class LaravelDataMigrations
 {
-    public static function migrate()
+    public static function migrate(Command $command)
     {
         $dataMigrations = self::getDataMigrations();
 
         foreach ($dataMigrations as $dataMigration) {
             /** @var AbstractDataMigration $dataMigrationInstance */
-            $dataMigrationInstance = new $dataMigration;
+            $dataMigrationInstance = new $dataMigration($command);
 
             if ($dataMigrationInstance->shouldMigrate()) {
                 $dataMigrationInstance->handle();
