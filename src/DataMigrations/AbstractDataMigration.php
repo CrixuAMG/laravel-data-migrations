@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 abstract class AbstractDataMigration implements DataMigrationContract
 {
-    private $command;
+    protected $command;
 
     public function __construct(Command $command)
     {
