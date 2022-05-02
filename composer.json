@@ -16,12 +16,8 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0",
-        "illuminate/support": "^6.0|^8.0"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^4.0",
-        "phpunit/phpunit": "^8.0"
+        "php": "^8.0",
+        "illuminate/support": "^9.10"
     },
     "autoload": {
         "psr-4": {
@@ -50,5 +46,9 @@
                 "LaravelDataMigrations": "CrixuAMG\\LaravelDataMigrations\\LaravelDataMigrationsFacade"
             }
         }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^7.4",
+        "phpunit/phpunit": "^9.5"
     }
 }
